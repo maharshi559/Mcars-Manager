@@ -1,0 +1,75 @@
+body{
+	background-color: #e9e9e9;
+}
+
+#allcars{
+	display: block;
+	height: 50px;
+	background-color: #fafafa;
+	margin:0;
+	/*margin-bottom: 20px;*/
+}
+
+#allcars h2{
+	padding: 15px;
+	font-size: 20px;
+	color: #aaa;
+	font-weight: 900px;
+}
+
+
+#allvendors-container{
+	/*border: solid 2px #5DADE2;*/
+	padding: 30px;
+	background-color: #fff;
+	overflow: scroll;
+	overflow-x: hidden;
+	height: 100vh;
+}
+
+#allvendors-container label{
+	font-weight: 100;
+	color:#999;
+}
+
+#file-upload {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+#car-btn {
+  width: 265px;
+  margin-left: 2px;
+}
+
+#file-upload input[type=file] {
+  font-size: 100px;
+  width: 259px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+#allvendors-container .panel{
+	/*border:none;*/
+}
+
+#allvendors-container .panel-footer{
+	border:none;
+}
+
+#allvendors-container .panel-heading{
+	border:none;
+	padding: none;
+}
+
+#allvendors-container .panel-body{
+	 margin-left: 0;
+	 margin-right: 0;
+}
+
+.media-body p{
+	opacity: 0.5;
+}
