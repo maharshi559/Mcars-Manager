@@ -51,11 +51,22 @@ class CarsController extends Controller
     public function store(Request $request)
     {
 
+        if ($request->hasFile('carimage')) {
 
-             
-     	$this->validate($request, [
-	    	'carimage' => 'mimes:jpeg,bmp,png', //only allow this type extension file.
-		]);
+            $this->validate($request, [
+                'carimage' => 'mimes:jpeg,bmp,png', //only allow this type extension file.
+            ]);
+
+
+            //save to data base
+            $carimage =$request->file('carimage')->getClientOriginalName();
+            //save to folder
+            $request->file('carimage')->move(base_path().'/public/images/vendors/bankcopy/', $carimage);
+        }
+        else{
+            $carimage ="default-car.png";
+        }
+
 		
 		
 
@@ -74,7 +85,7 @@ class CarsController extends Controller
               'inssend'  => $request->get('inssend'),
               'pollutionexp'  => $request->get('pollutionexp'),
               'vendorname'  => $request->get('vendorname'),
-              'carimage'  => $request->file('carimage')->getClientOriginalName(),
+              'carimage'  => $carimage,
               'custprice'  => $request->get('custprice'),
               'vendprice'  => $request->get('vendprice')
                          
@@ -83,8 +94,7 @@ class CarsController extends Controller
             ));
 
             $car->save();
-            $image_name = $request->file('carimage')->getClientOriginalName();
-            $request->file('carimage')->move(base_path().'/public/images/cars/', $image_name);
+
 
 
    

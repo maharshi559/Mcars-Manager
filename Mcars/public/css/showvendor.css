@@ -165,3 +165,13 @@
 		color: #9b8a30;
 	}
 
+	.delete a{
+		color: red;
+		cursor: pointer;
+	}
+
+	.delete a:hover{
+		background-color: red;
+		color: white;
+		padding: 10px;
+	}

@@ -3,6 +3,9 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/allvendors.css') }}" >
 <link rel="stylesheet" type="text/css" href="{{ asset('css/scrollstyle.css') }}" >
+
+
+
 	<div id="allcars">
 			<h2>LIST OF VENDORS</h2>
 	</div>

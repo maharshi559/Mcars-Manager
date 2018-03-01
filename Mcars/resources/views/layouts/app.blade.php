@@ -158,7 +158,7 @@
                             <li>
                                 <a href="#customerSubmenu" data-toggle="collapse" aria-expanded="false">
                                     <i class="fas fa-user-secret"></i>&nbsp;&nbsp;
-                                    <span class="text">   Customers</span>
+                                    <span class="text">Customers</span>
                                     <span class="pull-right"><i class="fas fa-caret-down"></i></span>
                                 </a>
                                 <ul class="collapse list-unstyled" id="customerSubmenu">
@@ -179,7 +179,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('bookings.create') }}">
-                                    <i class="fas fa-cogs"></i>&nbsp;&nbsp;
+                                    <i class="fas fa-road"></i>&nbsp;&nbsp;
                                     <span class="text">Bookings</span>
                                     <!-- <span class="pull-right"><i class="fas fa-caret-down"></i></span> -->
                                 </a><!--
@@ -223,6 +223,15 @@
 
 
                 <div class="col-md-12">
+
+                        <div class="flash-message">
+                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                @if(Session::has('alert-' . $msg))
+                                    <p class="alert alert-{{ $msg }}">{{ Session::get('message') }}</p>
+                                @endif
+                            @endforeach
+                        </div>
+
                     @yield('content')
                 </div>
             </div>
@@ -244,6 +253,8 @@
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');
                      $('#sidebar span').toggle();
+                     $('#user').toggle();
+
                  });
 
                  username = $('.user').text();

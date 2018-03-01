@@ -8,7 +8,6 @@
 	<div class="row  pull-right" id="vendor-operations">
 		<div class="col-md-12">
 			<button class="btn btn-warning btn-sm">Edit</button>
-			<button class="btn btn-danger btn-sm">Delete</button>
 			<button class="btn btn-info btn-sm">Disable</button>
 			<button class="btn btn-primary  btn-sm disabled">Add Documents</button>
 		</div>
@@ -123,6 +122,7 @@
 				    </span>
 				  </li>
 			</ul>
+
 		</div>
 		<div class="col-md-9">
 			<div id="allcars">
@@ -423,7 +423,22 @@
 				  </li>
 				  
 			</ul>
-		</div>
+
+				{{--<p>Delete this Vendor? <span class="delete"><a type="submit" href="{{ route('vendors.destroy',$vendor->id)}}">Click here</a></span></p>--}}
+
+
+
+
+			<form action="{{ route('vendors.destroy', [$vendor->id])}}" method="POST">
+				<input type="hidden" name="_method" value="DELETE">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="submit" class="btn btn-danger" value="Delete"/>
+			</form>
+
+					</div>
+
+
+
 		<div class="col-md-9">
 			<div id="allcars">
 					<h2>VENDOR'S CAR LISTINGS</h2>
@@ -577,7 +592,6 @@
 							<h4 class="media-heading">Srinivas (Vendor Y)</h4>
 							<p>Requested Car Trip Details. Gopikath Responded.</p>
 						</div>
-
 						<div class="col-md-3">
 							<h5 class="media-heading pull-right">
 								<i class="fas fa-angle-right"></i>
@@ -593,4 +607,5 @@
 		</div>
 	</div>
 </div>
+
 @endsection

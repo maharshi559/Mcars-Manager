@@ -111,7 +111,7 @@
 							<div class="file-select">
 								<div class="file-select-button" id="fileName">Choose File</div>
 								<div class="file-select-name" id="noBankCopy">No file chosen...</div>
-								<input type="file" name="bankcopy" id="bankCopy" >
+								<input type="file" name="bankcopy" id="bankCopy" required>
 							</div>
 						</div>
 
