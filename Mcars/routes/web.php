@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -24,11 +24,11 @@ Route::resource('users', 'UsersController');
 
 Route::resource('cars', 'CarsController');
 
-Route::resource('vendors', 'VendorController');
+Route::resource('vendors', 'VendorsController');
 
 Route::resource('staff', 'StaffController');
 
 Route::resource('customers', 'CustomerController');
 
-Route::resource('bookings', 'BookingController');
+Route::resource('bookings', 'BookingsController');
 

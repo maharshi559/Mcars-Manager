@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-<h1>Welcome to M Cars</h1>
+<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Lora|Nanum+Brush+Script|Patua+One" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}" >
 
 @endsection

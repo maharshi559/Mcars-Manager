@@ -15,7 +15,8 @@
 					<div class="col-md-6">
 		  				<div class="form-group">
 		    				<label for="brand"> Brand</label>
-			    			<select class="form-control" name="brand">
+			    			<select class="form-control" name="brand" required>
+								<option value="">Select Car's Brand</option>
 			    				<option value="Honda">Honda</option>
 						    	<option  value="Hyundai">Hyundai</option>
 						    	<option  value="Tata">Tata</option>
@@ -65,7 +66,8 @@
 		  			<div class="col-md-6">
 		  				<div class="form-group">
 		    				<label for="fueltype">Fuel Type</label>
-		    				<select class="form-control" name="fueltype">
+		    				<select class="form-control" name="fueltype" required>
+								<option value="">Select Fuel Type</option>
 								<option value="Petrol">Petrol</option>
 								<option value="Diesel">Diesel</option>
 							</select>
@@ -74,10 +76,8 @@
 		  			<div class="col-md-6">
 		  				<div class="form-group">
 		    				<label for="seatcap">Seating Capacity</label>
-		    				<select class="form-control" name="seatcap">
-							  <option value="1">1</option>
-							  <option value="2">2</option>
-							  <option value="3">3</option>
+		    				<select class="form-control" name="seatcap" required>
+								<option value="">Select Seating Capacity</option>
 							  <option value="4">4</option>
 							  <option value="5">5</option>
 							  <option value="6">6</option>
@@ -125,12 +125,12 @@
 			</div>
 		  	<div class="col-md-6">
 		  		<div class="form-group">
-		    		<label for="vendor">Vendor Table </label>
-		    		<select class="form-control" name="vendorname">
-		    			<option value="1">1</option>
-		    			<option value="2">1</option>
-		    			<option value="3">1</option>
-		    			<option value="4">1</option>
+		    		<label for="vendor">Vendor Name </label>
+		    		<select class="form-control" name="vendorname" required>
+						<option hidden value="">Select Vendor</option>
+						@foreach($vendors as $vendor)
+		    			<option value="{{$vendor->id}}">{{$vendor->firstname}}  {{$vendor->lastname}} </option>
+					    @endforeach
 		    		</select>
 		  		</div>
 				<div class="row">

@@ -3,62 +3,8 @@
 @section('content')
 				<link rel="stylesheet" type="text/css" href="{{ asset('css/showvendor.css') }}" >
 <div class="container col-md-12">
-    <div class="row">
-        <div class="col-md-12" id="vendor-profile">
-            <div class="media panel">
-			<div class="media-left">
-		    	<a href="#">
-		      		<img class="media-object" src="{{ asset('images/cars/'. $car->carimage ) }}" alt="..." width="150px">
-		    	</a>
-		  	</div>
-		  	<div class="media-body media-middle">
-		  		<div class="row">
-			  		<div class="col-md-3">
-				    	<h2 class="media-heading">{{$car->carname}}</h2>
-				    	
-			    	</div>
-			    	
-		    	</div>
-		    	<div class="row">
-			  		<div class="col-md-3">
-				    	
-				    	<h5>{{$car->color}}</h5>
-			    	</div>
-			    	<div class="col-md-3">
-				    	<h5 class="media-heading">Active</h5>
-				    	<!-- <p>Since May, 2016</p> -->
-			    	</div>
-			    	<div class="col-md-3">
-				    	<h5 class="media-heading">Car Number</h5>
-				    	<!-- <p>Since May, 2016</p> -->
-			    	</div>
-			    	<div class="col-md-3">
-				    	
-				    	<h5 class="media-heading">Car ID# 11084028</h5>
-			    	</div>
-		    	</div>
-		    	<div class="row">
-			  		<div class="col-md-3">
-				    	
-				    	<h5>{{$car->model}}</h5>
-			    	</div>
-			    	<div class="col-md-3">
-				    	<h5 class="media-heading">{{$car->enginenumber}}</h5>
-				    	<!-- <p>Since May, 2016</p> -->
-			    	</div>
-			    	<div class="col-md-3">
-				    	<h5 class="media-heading">{{$car->chasisnumber}}</h5>
-				    	<!-- <p>Since May, 2016</p> -->
-			    	</div>
-			    	<div class="col-md-3">
-				    	
-				    	<h5 class="media-heading">Price/day: {{$car->custprice}}</h5>
-			    	</div>
-		    	</div>
-		  	</div>
-	</div>
 
-	<div class="row" id="vendor-operations">
+	<div class="row pull-right" id="vendor-operations">
 		<div class="col-md-12">
 			<button class="btn btn-warning">Edit</button>
 			<button class="btn btn-danger">Delete</button>
@@ -66,6 +12,62 @@
 			<button class="btn btn-primary disabled">Add Documents</button>
 		</div>
 	</div>
+
+
+	<div class="row">
+        <div class="col-md-12" id="vendor-profile">
+            <div class="media panel">
+			<div class="media-left">
+		    	<a href="#">
+		      		<img class="media-object" src="{{ asset('images/cars/'. $car->carimage ) }}" alt="..." width="150px">
+		    	</a>
+		  	</div>
+		  	<div class="media-body media-middle" id="car-details">
+		  		<div class="row">
+			  		<div class="col-md-3">
+				    	<h2 class="media-heading">{{$car->brand}} {{$car->carname}}</h2>
+				    	
+			    	</div>
+			    	
+		    	</div>
+		    	<div class="row">
+			  		<div class="col-md-3">
+				    	<h5><i class="fas fa-paint-brush"></i> {{$car->color}}</h5>
+			    	</div>
+			    	<div class="col-md-3">
+				    	<h5><i class="fas fa-child"></i> Active</h5>
+				    	<!-- <p>Since May, 2016</p> -->
+			    	</div>
+			    	<div class="col-md-3">
+				    	<h5><i class="fas fa-ticket-alt"></i> {{$car->carnumber}}</h5>
+				    	<!-- <p>Since May, 2016</p> -->
+			    	</div>
+			    	<div class="col-md-3">
+
+						<h5><i class="fas fa-id-badge"></i> {{$car->id}}</h5>
+			    	</div>
+		    	</div>
+		    	<div class="row">
+			  		<div class="col-md-3">
+
+						<h5><i class="fas fa-tachometer-alt"></i> {{$car->model}}</h5>
+			    	</div>
+			    	<div class="col-md-3">
+				    	<h5><i class="fas fa-tachometer-alt"></i> {{$car->enginenumber}}</h5>
+				    	<!-- <p>Since May, 2016</p> -->
+			    	</div>
+			    	<div class="col-md-3">
+				    	<h5><i class="fas fa-tachometer-alt"></i> {{$car->chasisnumber}}</h5>
+				    	<!-- <p>Since May, 2016</p> -->
+			    	</div>
+			    	<div class="col-md-3">
+				    	
+				    	<h5><i class="fas fa-money-bill-alt"></i> Price/day: <i class="fas fa-rupee-sign"></i> {{$car->custprice}}</h5>
+			    	</div>
+		    	</div>
+		  	</div>
+	</div>
+
 
 	<div class="row" id="vendor-operations">
 		<div class="col-md-3">

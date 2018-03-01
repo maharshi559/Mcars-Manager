@@ -13,5 +13,5 @@ class Car extends Model
     ];
 
     protected $table = 'cars';
-    
+
 }

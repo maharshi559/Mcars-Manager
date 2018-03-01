@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Car;
+use App\Vendor;
 
 class CarsController extends Controller
 {
@@ -23,8 +24,10 @@ class CarsController extends Controller
     public function index()
     {
         //
+
         $cars = Car::all();
-        return view("cars.allcars", ["cars"=>$cars]);  
+
+        return view("cars.allcars", ["cars"=>$cars]);
     }
 
     /**
@@ -34,9 +37,8 @@ class CarsController extends Controller
      */
     public function create()
     {
-        //
-        //$users = User::all();
-        return view("cars.addcar");
+        $vendors = Vendor::all();
+        return view("cars.addcar", ["vendors"=>$vendors]);
 
     }
 
@@ -48,12 +50,8 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
-                 	if ($request->file('carimage')->getClientOriginalName() == "" )
-         {
-            $request->file('carimage')->getClientOriginalName() = "default-car.png";
-          }	
-          
-        echo  $request->file('carimage')->getClientOriginalName() ;exit;
+
+
              
      	$this->validate($request, [
 	    	'carimage' => 'mimes:jpeg,bmp,png', //only allow this type extension file.

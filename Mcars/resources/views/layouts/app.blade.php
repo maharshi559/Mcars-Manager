@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{--favicon--}}
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.png') }}"/>
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -19,7 +22,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -32,7 +35,7 @@
 
                     <!-- Branding Image -->
                     @auth
-                    <a type="button" id="sidebarCollapse" class="btn navbar-btn">
+                    <a id="sidebarCollapse" class="btn navbar-btn">
                         <i class="fas fa-bars "></i>
                     </a>
                         @endauth
@@ -58,7 +61,7 @@
                         @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                               <i class="fas fa-user-secret"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                               <i class="fas fa-user-secret"></i><span class="user">{{ Auth::user()->name }}</span> <span class="caret"></span>
                             </a>
                                 <ul class="dropdown-menu">
                                     <li>
@@ -117,110 +120,103 @@
         <div class="wrapper">
             <!-- Sidebar Holder -->
             @auth
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h5>Venkata<span>Admin</span></h5>
-                </div>
 
-                <ul class="list-unstyled components">
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-circle-notch"></i>&nbsp;&nbsp;
-                            Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-users"></i>&nbsp;&nbsp;
-                            Vendors
-                            <span class="pull-right"><i class="fas fa-caret-down"></i></span>
-                        </a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li><a href="{{ route('vendors.index') }}">All Vendors</a></li>
-                            <li><a href="{{ route('vendors.create') }}">Add Vendor</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-car"></i>&nbsp;&nbsp;
-                            Cars
-                            <span class="pull-right"><i class="fas fa-caret-down"></i></span>
-                        </a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="{{ route('cars.index') }}">All Cars</a></li>
-                            <li><a href="{{ route('cars.create') }}">Add Car</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#customerSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-user-secret"></i>&nbsp;&nbsp;
-                            Customers
-                            <span class="pull-right"><i class="fas fa-caret-down"></i></span>
-                        </a>
-                        <ul class="collapse list-unstyled" id="customerSubmenu">
-                            <li><a href="{{ route('customers.index') }}">All Customers</a></li>
-                            <li><a href="{{ route('customers.create') }}">Add Customers</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#staffSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-cogs"></i>&nbsp;&nbsp;
-                            Staff
-                            <span class="pull-right"><i class="fas fa-caret-down"></i></span>
-                        </a>
-                        <ul class="collapse list-unstyled" id="staffSubmenu">
-                            <li><a href="{{ route('staff.index') }}">All Staff</a></li>
-                            <li><a href="{{ route('staff.create') }}">Add Staff</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="{{ route('bookings.create') }}">
-                            <i class="fas fa-cogs"></i>&nbsp;&nbsp;
-                            Bookings
-                            <!-- <span class="pull-right"><i class="fas fa-caret-down"></i></span> -->
-                        </a><!-- 
+                    <nav id="sidebar">
+                        <div class="sidebar-header">
+                            <h5 id="user"></h5>
+                        </div>
+
+                        <ul class="list-unstyled components">
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-circle-notch"></i>&nbsp;&nbsp;
+                                    <span class="text">Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                                    <i class="fas fa-users"></i>&nbsp;&nbsp;
+                                    <span class="text">Vendors</span>
+                                    <span class="pull-right"><i class="fas fa-caret-down"></i></span>
+                                </a>
+                                <ul class="collapse list-unstyled" id="homeSubmenu">
+                                    <li><a href="{{ route('vendors.index') }}"><span class="text">All Vendors</span></a></li>
+                                    <li><a href="{{ route('vendors.create') }}"><span class="text">Add Vendor</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                                    <i class="fas fa-car"></i>&nbsp;&nbsp;
+                                    <span class="text">Cars</span>
+                                    <span class="pull-right"><i class="fas fa-caret-down"></i></span>
+                                </a>
+                                <ul class="collapse list-unstyled" id="pageSubmenu">
+                                    <li><a href="{{ route('cars.index') }}"><span class="text">All Cars</span></a></li>
+                                    <li><a href="{{ route('cars.create') }}"><span class="text">Add Car</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#customerSubmenu" data-toggle="collapse" aria-expanded="false">
+                                    <i class="fas fa-user-secret"></i>&nbsp;&nbsp;
+                                    <span class="text">   Customers</span>
+                                    <span class="pull-right"><i class="fas fa-caret-down"></i></span>
+                                </a>
+                                <ul class="collapse list-unstyled" id="customerSubmenu">
+                                    <li><a href="{{ route('customers.index') }}"><span class="text">All Customers</span></a></li>
+                                    <li><a href="{{ route('customers.create') }}"><span class="text">Add Customers</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#staffSubmenu" data-toggle="collapse" aria-expanded="false">
+                                    <i class="fas fa-cogs"></i>&nbsp;&nbsp;
+                                    <span class="text">Staff</span>
+                                    <span class="pull-right"><i class="fas fa-caret-down"></i></span>
+                                </a>
+                                <ul class="collapse list-unstyled" id="staffSubmenu">
+                                    <li><a href="{{ route('staff.index') }}"><span class="text">All Staff</span></a></li>
+                                    <li><a href="{{ route('staff.create') }}"><span class="text">Add Staff</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ route('bookings.create') }}">
+                                    <i class="fas fa-cogs"></i>&nbsp;&nbsp;
+                                    <span class="text">Bookings</span>
+                                    <!-- <span class="pull-right"><i class="fas fa-caret-down"></i></span> -->
+                                </a><!--
                         <ul class="collapse list-unstyled" id="bookingSubmenu">
                             <li><a href="#">All Staff</a></li>
                             <li><a href="#">Add Staff</a></li>
                         </ul> -->
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-credit-card"></i>&nbsp;&nbsp;
-                            Billings
-                            <!-- <span class="pull-right"><i class="fas fa-caret-down"></i></span> -->
-                        </a>
-                        <!-- <ul class="collapse list-unstyled" id="billingSubmenu">
-                            <li><a href="#">All Staff</a></li>
-                            <li><a href="#">Add Staff</a></li>
-                        </ul> -->
-                    </li>
-                    <li>
-                        <a href="#billingSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-wrench"></i>&nbsp;&nbsp;
-                            Manage
-                            <span class="pull-right"><i class="fas fa-caret-down"></i></span>
-                        </a>
-                        <ul class="collapse list-unstyled" id="billingSubmenu">
-                            <li><a href="#">Users</a></li>
-                            <li><a href="#">Add Staff</a></li>
-                        </ul>
-                    </li>
-                    <li>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="collapse" aria-expanded="false">
+                                    <i class="fas fa-credit-card"></i>&nbsp;&nbsp;
+                                    <span class="text">Billings</span>
+                                    <!-- <span class="pull-right"><i class="fas fa-caret-down"></i></span> -->
+                                </a>
+                                <!-- <ul class="collapse list-unstyled" id="billingSubmenu">
+                                    <li><a href="#">All Staff</a></li>
+                                    <li><a href="#">Add Staff</a></li>
+                                </ul> -->
+                            </li>
+                            <li>
+                                <a href="#billingSubmenu" data-toggle="collapse" aria-expanded="false">
+                                    <i class="fas fa-wrench"></i>&nbsp;&nbsp;
+                                    <span class="text">Manage</span>
+                                    <span class="pull-right"><i class="fas fa-caret-down"></i></span>
+                                </a>
+                                <ul class="collapse list-unstyled" id="billingSubmenu">
+                                    <li><a href="#"><span class="text">Users</span></a></li>
+                                    <li><a href="#"><span class="text">Add Users</span></a></li>
+                                </ul>
+                            </li>
 
-                        <a href="#">
-                            <i class="glyphicon glyphicon-paperclip"></i>
-                            FAQ
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-send"></i>
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+                        </ul>
+                    </nav>
+
+
+
+
             @endauth
             <!-- Page Content Holder -->
             <div id="content">
@@ -243,9 +239,20 @@
 
          <script type="text/javascript">
              $(document).ready(function () {
+                 var username;
+                 var firstname;
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');
+                     $('#sidebar span').toggle();
                  });
+
+                 username = $('.user').text();
+                 console.log("sidebar: "+username);
+
+                 firstname = username.split(" ",1);
+                 console.log("sidebar: "+firstname[0]);
+                 $("#user").html(firstname[0]);
+//                 $('#user').HTML= firstname[0];
              });
          </script>
 

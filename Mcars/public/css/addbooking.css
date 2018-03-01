@@ -1,7 +1,5 @@
 
-#add-car{
-	color: #999999;
-}
+
 
 form label{
 	color: #888888;
@@ -9,6 +7,10 @@ form label{
 
 form input{
 	background-color: transparent;
+}
+
+.navbar{
+	margin: 0;
 }
 
 #right-pane{
@@ -37,21 +39,19 @@ body{
 	display: block;
 	height: 50px;
 	background-color: #fafafa;
-	margin:0;
+	margin-top:20px;
+	color: #999999;
+	width: 100%;
 	/*margin-bottom: 20px;*/
 }
 
 #add-car h2{
-	padding: 15px;
+	
 	font-size: 20px;
 	color: #aaa;
 	font-weight: 900px;
 }
 
-
-#page-content-wrapper{
-	margin-left: 0;
-}
 
 .form-control{
 	border-radius: 0;
@@ -70,6 +70,7 @@ body{
 #addcar-container{
 	/*border: solid 2px #5DADE2;*/
 	padding: 30px;
+	width: auto;
 	background-color: #fff;
 }
 
@@ -132,4 +133,3 @@ body{
 	height: 50px;
 	border-radius: 50%;
 }
-

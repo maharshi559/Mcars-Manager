@@ -2,6 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/allcars.css') }}" >
+<link rel="stylesheet" type="text/css" href="{{ asset('css/scrollstyle.css') }}" >
 	<div id="allcars">
 			<h2>
 				ALL CARS
@@ -15,7 +16,7 @@
 		<div class="col-md-3">
 			<div class="panel panel-default">
 			  	<div class="panel-body">	
-					<h5 class="text-center">{{$car->carname}}</h5>
+					<h5 class="text-center">{{$car->brand}} {{$car->carname}}</h5>
 			    	<img src="{{ asset('images/cars/'. $car->carimage ) }}" width="100%">
 			   
 			  	</div>

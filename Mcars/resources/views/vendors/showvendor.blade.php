@@ -2,52 +2,60 @@
 
 @section('content')
 				<link rel="stylesheet" type="text/css" href="{{ asset('css/showvendor.css') }}" >
+				<link rel="stylesheet" type="text/css" href="{{ asset('css/scrollstyle.css') }}" >
 <div class="container col-md-12">
+
+	<div class="row  pull-right" id="vendor-operations">
+		<div class="col-md-12">
+			<button class="btn btn-warning btn-sm">Edit</button>
+			<button class="btn btn-danger btn-sm">Delete</button>
+			<button class="btn btn-info btn-sm">Disable</button>
+			<button class="btn btn-primary  btn-sm disabled">Add Documents</button>
+		</div>
+	</div>
+
     <div class="row">
         <div class="col-md-12" id="vendor-profile">
             <div class="media panel">
 			<div class="media-left">
 		    	<a href="#">
-		      		<img class="media-object" src="{{ asset('images/default-car.png') }}" alt="..." width="150px">
-		    	</a>
+
+					<div id="placeholder">
+						<h1>{{substr($vendor->firstname, 0,1)}}{{substr($vendor->lastname, 0,1)}}</h1>
+					</div>
+				</a>
 		  	</div>
 		  	<div class="media-body media-middle">
 		  		<div class="row">
-			  		<div class="col-md-3">
-				    	<h2 class="media-heading">Srinivas Reddy</h2>
+			  		<div class="col-md-8">
+				    	<h2 class="media-heading">{{$vendor->firstname}} {{$vendor->lastname}} </h2>
 				    	
 			    	</div>
 			    	
 		    	</div>
-		    	<div class="row">
-			  		<div class="col-md-3">
-				    	
-				    	<h5>Since May, 2016</h5>
-			    	</div>
+		    	<div class="row" id="vendor-info">
+
 			    	<div class="col-md-3">
-				    	<h5 class="media-heading">Active</h5>
+				    	<h5 class="media-heading"><span id="active"><i class="fas fa-child"></i></span> Active</h5>
+				    	<!-- <p>Since May, 2016</p> -->
+			    	</div>
+					<div class="col-md-3">
+						<h5 class="media-heading"><span id="email"><i class="fas fa-envelope"></i></span> {{$vendor->email}}</h5>
+						<!-- <p>Since May, 2016</p> -->
+					</div>
+			    	<div class="col-md-3">
+				    	<h5 class="media-heading"><span id="phone"><i class="fas fa-phone"></i></span> {{$vendor->phonenumber}}</h5>
 				    	<!-- <p>Since May, 2016</p> -->
 			    	</div>
 			    	<div class="col-md-3">
-				    	<h5 class="media-heading">+91-9440567876</h5>
-				    	<!-- <p>Since May, 2016</p> -->
-			    	</div>
-			    	<div class="col-md-3">
 				    	
-				    	<h5 class="media-heading">Vendor ID# 11084028</h5>
+				    	<h5 class="media-heading"><span id="vendorID"><i class="fas fa-id-badge"></i></span> {{$vendor->id}}</h5>
 			    	</div>
 		    	</div>
 		  	</div>
 	</div>
 
-	<div class="row" id="vendor-operations">
-		<div class="col-md-12">
-			<button class="btn btn-warning">Edit</button>
-			<button class="btn btn-danger">Delete</button>
-			<button class="btn btn-info">Disable</button>
-			<button class="btn btn-primary disabled">Add Documents</button>
-		</div>
-	</div>
+
 
 	<div class="row" id="vendor-operations">
 		<div class="col-md-3">
@@ -188,6 +196,166 @@
 					    	</a>
 				    	</div>
 				  	</div>
+				</div>
+
+				<div class="media panel">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="{{ asset('images/default-car.png') }}" alt="..." width="50px">
+						</a>
+					</div>
+					<div class="media-body">
+						<div class="col-md-12">
+							<h4 class="media-heading">Hyundai Sonata</h4>
+							<div class="col-md-3">
+								Active
+							</div>
+							<div class="col-md-3">
+								2 trips
+							</div>
+							<div class="col-md-3">
+								<i class="fas fa-rupee-sign"></i> 22,456 /this Mo.
+							</div>
+							<div class="col-md-3">
+								13 Days Rented
+							</div>
+						</div>
+
+					<!-- <div class="col-md-3">
+					    		<h5 class="media-heading pull-right">
+					    			<i class="fas fa-angle-right"></i>
+					    		</h5>
+					    	<a href="{{ route('vendors.show', ['id'=>Auth::user()->id]) }}">
+					    		<p>More Details	</p>
+					    	</a>
+				    	</div> -->
+					</div>
+				</div>
+
+				<div class="media panel">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="{{ asset('images/default-car.png') }}" alt="..." width="50px">
+						</a>
+					</div>
+					<div class="media-body">
+						<div class="col-md-9">
+							<h4 class="media-heading">Gopikanth (Staff Member-3)</h4>
+							<p>Updated Srinivas's Dealership Details. Please check profile.</p>
+						</div>
+
+						<div class="col-md-3">
+							<h5 class="media-heading pull-right">
+								<i class="fas fa-angle-right"></i>
+							</h5>
+							<a href="{{ route('vendors.show', ['id'=>Auth::user()->id]) }}">
+								<p>More Details	</p>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="media panel">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="{{ asset('images/default-car.png') }}" alt="..." width="50px">
+						</a>
+					</div>
+					<div class="media-body">
+						<div class="col-md-9">
+							<h4 class="media-heading">Srinivas (Vendor Y)</h4>
+							<p>Requested Car Trip Details. Gopikath Responded.</p>
+						</div>
+
+						<div class="col-md-3">
+							<h5 class="media-heading pull-right">
+								<i class="fas fa-angle-right"></i>
+							</h5>
+							<a href="{{ route('vendors.show', ['id'=>Auth::user()->id]) }}">
+								<p>More Details	</p>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="media panel">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="{{ asset('images/default-car.png') }}" alt="..." width="50px">
+						</a>
+					</div>
+					<div class="media-body">
+						<div class="col-md-12">
+							<h4 class="media-heading">Hyundai Sonata</h4>
+							<div class="col-md-3">
+								Active
+							</div>
+							<div class="col-md-3">
+								2 trips
+							</div>
+							<div class="col-md-3">
+								<i class="fas fa-rupee-sign"></i> 22,456 /this Mo.
+							</div>
+							<div class="col-md-3">
+								13 Days Rented
+							</div>
+						</div>
+
+					<!-- <div class="col-md-3">
+					    		<h5 class="media-heading pull-right">
+					    			<i class="fas fa-angle-right"></i>
+					    		</h5>
+					    	<a href="{{ route('vendors.show', ['id'=>Auth::user()->id]) }}">
+					    		<p>More Details	</p>
+					    	</a>
+				    	</div> -->
+					</div>
+				</div>
+
+				<div class="media panel">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="{{ asset('images/default-car.png') }}" alt="..." width="50px">
+						</a>
+					</div>
+					<div class="media-body">
+						<div class="col-md-9">
+							<h4 class="media-heading">Gopikanth (Staff Member-3)</h4>
+							<p>Updated Srinivas's Dealership Details. Please check profile.</p>
+						</div>
+
+						<div class="col-md-3">
+							<h5 class="media-heading pull-right">
+								<i class="fas fa-angle-right"></i>
+							</h5>
+							<a href="{{ route('vendors.show', ['id'=>Auth::user()->id]) }}">
+								<p>More Details	</p>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="media panel">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="{{ asset('images/default-car.png') }}" alt="..." width="50px">
+						</a>
+					</div>
+					<div class="media-body">
+						<div class="col-md-9">
+							<h4 class="media-heading">Srinivas (Vendor Y)</h4>
+							<p>Requested Car Trip Details. Gopikath Responded.</p>
+						</div>
+
+						<div class="col-md-3">
+							<h5 class="media-heading pull-right">
+								<i class="fas fa-angle-right"></i>
+							</h5>
+							<a href="{{ route('vendors.show', ['id'=>Auth::user()->id]) }}">
+								<p>More Details	</p>
+							</a>
+						</div>
+					</div>
 				</div>
 
 			</div>
@@ -339,6 +507,86 @@
 					    	</a>
 				    	</div>
 				  	</div>
+				</div>
+
+				<div class="media panel">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="{{ asset('images/default-car.png') }}" alt="..." width="50px">
+						</a>
+					</div>
+					<div class="media-body">
+						<div class="col-md-12">
+							<h4 class="media-heading">Hyundai Sonata</h4>
+							<div class="col-md-3">
+								Active
+							</div>
+							<div class="col-md-3">
+								2 trips
+							</div>
+							<div class="col-md-3">
+								<i class="fas fa-rupee-sign"></i> 22,456 /this Mo.
+							</div>
+							<div class="col-md-3">
+								13 Days Rented
+							</div>
+						</div>
+
+					<!-- <div class="col-md-3">
+					    		<h5 class="media-heading pull-right">
+					    			<i class="fas fa-angle-right"></i>
+					    		</h5>
+					    	<a href="{{ route('vendors.show', ['id'=>Auth::user()->id]) }}">
+					    		<p>More Details	</p>
+					    	</a>
+				    	</div> -->
+					</div>
+				</div>
+
+				<div class="media panel">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="{{ asset('images/default-car.png') }}" alt="..." width="50px">
+						</a>
+					</div>
+					<div class="media-body">
+						<div class="col-md-9">
+							<h4 class="media-heading">Gopikanth (Staff Member-3)</h4>
+							<p>Updated Srinivas's Dealership Details. Please check profile.</p>
+						</div>
+
+						<div class="col-md-3">
+							<h5 class="media-heading pull-right">
+								<i class="fas fa-angle-right"></i>
+							</h5>
+							<a href="{{ route('vendors.show', ['id'=>Auth::user()->id]) }}">
+								<p>More Details	</p>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="media panel">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="{{ asset('images/default-car.png') }}" alt="..." width="50px">
+						</a>
+					</div>
+					<div class="media-body">
+						<div class="col-md-9">
+							<h4 class="media-heading">Srinivas (Vendor Y)</h4>
+							<p>Requested Car Trip Details. Gopikath Responded.</p>
+						</div>
+
+						<div class="col-md-3">
+							<h5 class="media-heading pull-right">
+								<i class="fas fa-angle-right"></i>
+							</h5>
+							<a href="{{ route('vendors.show', ['id'=>Auth::user()->id]) }}">
+								<p>More Details	</p>
+							</a>
+						</div>
+					</div>
 				</div>
 
 			</div>

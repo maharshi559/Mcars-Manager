@@ -1,13 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+
+<link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}" >
+<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Lora|Nanum+Brush+Script|Patua+One" rel="stylesheet">
+
+
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-
+                
                 <div class="panel-body">
+
+                    <div class="container col-md-12" id="login-form">
+                        <h1>Register</h1>
+
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -69,6 +77,7 @@
                             </div>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
         </div>
