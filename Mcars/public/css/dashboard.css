@@ -72,6 +72,7 @@ i, span {
     color: #fff;
     transition: all 0.3s;
     height: auto;
+
 }
 
 #content{width:100%}
@@ -141,6 +142,7 @@ ul ul a {
         max-width: 80px;
         text-align: center;
         margin-left: -80px !important ;
+        position: fixed;
     }
     a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
         top: auto;
@@ -207,6 +209,3 @@ li a{
     text-align: center;
 }
 
-body{
-    overflow: hidden;
-}

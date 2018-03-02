@@ -9,78 +9,109 @@
 			<h2>ADD NEW RESERVATION</h2>
 	</div>
 
-
+<form>
 <div class="col-md-12" id="addcar-container">
 
-	<form>
-		<div class="col-md-12">
-			<div class="col-md-4">
-				<div class="form-group">
-					<label for="From">From</label>
-					<input type="date" class="form-control" name="from" name="From" placeholder="Ex. 12/12/2012" required>
+
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="form-group">
+						<label for="From">From</label>
+						<input type="date" class="form-control" name="from" placeholder="Ex. 12/12/2012" required>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="FromTime">Time</label>
+						<input type="time" class="form-control" name="fromtime" id="fromtime" placeholder="Ex. 03:00pm" required>
+					</div>
 				</div>
 			</div>
-			<div class="col-md-2">
-			  	<div class="form-group">
-		    		<label for="FromTime">Time</label>
-		    		<input type="time" class="form-control" name="fromtime" id="fromtime" placeholder="Ex. 03:00pm" required>
-		  		</div>
-		  	</div>
-		  	<div class="col-md-4">
+			<div class="row">
+		  		<div class="col-md-8">
 			  	<div class="form-group">
 		    		<label for="To">To</label>
 		    		<input type="date" class="form-control" name="to" id="to" placeholder="Ex. 12/12/2012" required>
 		  		</div>
 			</div>
-			<div class="col-md-2">
+				<div class="col-md-4">
 			  	<div class="form-group">
 		    		<label for="FromTime">Time</label>
 		    		<input type="time" class="form-control" name="totime" id="totime" placeholder="Ex. 03:00pm" required>
 		  		</div>
 		  	</div>
-		    <div id="menu1" class="tab-pane fade">
-		      	<div class="row">
-			      	<div class="media panel">
-						<div class="media-left">
-					    	<a href="#">
-					      		<img class="media-object" src="{{ asset('images/default-car.png') }}" alt="..." width="50px">
-					    	</a>
-						</div>
-						<div class="media-body">
-						  	<div class="col-md-3">
-							    <h4 class="media-heading">Srinivas Reddy</h4>
-							    <p>Since May, 2016</p>
-						    </div>
-						    <div class="col-md-3">
-								<h5 class="media-heading">Active</h5>
-							    	<!-- <p>Since May, 2016</p> -->
-						    </div>
-						    <div class="col-md-3">
-							    <h5 class="media-heading">+91-9440567876</h5>
-							    	<!-- <p>Since May, 2016</p> -->
-							</div>
-						    <div class="col-md-3">
-						    	<h5 class="media-heading pull-right">
-						    		<i class="fas fa-angle-right"></i>
-						    	</h5>
-						    	<a href="{{ route('vendors.show', ['id'=>Auth::user()->id]) }}">
-						    		<p>More Details	</p>
-						    	</a>
-						    </div>
-						</div>
-					</div>
-				</div>
-		    </div>
+			</div>
 	    </div>
 
-	    <div class="col-md-12">
-		    
+	    <div class="col-md-6">
+			<div class="row">
+				{{--Calendar starts here--}}
+
+				<table class="table">
+					<thead>
+						<th>sun</th>
+						<th>mon</th>
+						<th>tue</th>
+						<th>wed</th>
+						<th>thu</th>
+						<th>fri</th>
+						<th>sat</th>
+					</thead>
+					<tr id="firstweek">
+
+					</tr>
+				</table>
+
+			</div>
 	    </div>
-	</form> 
-	
+
 </div>
+</form>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
+<script>
+	{{--Assigning months in an array--}}
+	var months = ["Jan","Feb","Mar","Apr","May","June","July","Aug","Sept","Oct","Nov","Dec"];
+	var days = ["sunday", "monday", "tuesday", "wednesday", "thursday","friday", "satday"];
+
+	var date = new Date();
+	var currentMonth = date.getMonth();
+	var currentYear = date.getFullYear();
+	console.log("year: "+currentYear);
+	console.log(months[currentMonth-1]);
+
+	var monthStart = new Date(currentYear,currentMonth,1);
+	var monthStartDate = monthStart.getDay();
+	console.log(monthStartDate);
+
+
+	$(document).ready(function () {
+var day=1;
+
+//		for(var i=0; i<date.getDate();i++){
+//			console.log(i);
+//			$(".table").append("<tr>"+week()+"</tr>")
+//		}
+
+	 function week() {
+			for (var i=0;i<7;i++){
+				$("#firstweek").append("<td>"+date.getDate()+"</td>");
+			}
+		}
+
+	});
+	//document.getElementById("firstweek").innerHTML("<td>"+monthStartDate+"</td>");
+</script>
 
 	@endsection
+
+
+
+
+
+
+
+
+

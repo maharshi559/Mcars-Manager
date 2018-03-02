@@ -42,11 +42,21 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="email">E-mail*</label>
-								<input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="sample@vendor.com" required>
+							<div class="row">
+								<div class="col-md-8">
+									<div class="form-group">
+										<label for="email">E-mail*</label>
+										<input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="sample@vendor.com" required>
+									</div>
+
+								</div>
+								<div class="col-md-4">
+									<label for="dob">Date of Birth</label>
+									<input name="dob" data-format="dd/MM/yyyy" class="form-control" type="text" placeholder="1985/12/31"></input><span class="add-on" />
+								</div>
 							</div>
-							<div class="form-group">
+
+<div class="form-group">
 								<label for="address">Address*</label>
 								<!-- <textarea class="form-control" rows="3"></textarea> -->
 								<input type="text" name="address" class="form-control" placeholder="H.no, street" required>
@@ -115,6 +125,15 @@
 							</div>
 						</div>
 
+						<div class="file-upload">
+							<label for="otherdocs">Other Documents (optional)</label>
+							<div class="file-select">
+								<div class="file-select-button" id="fileName">Choose File</div>
+								<div class="file-select-name" id="noOtherDocs">No file chosen...</div>
+								<input type="file" name="otherdocs" id="otherDocs">
+							</div>
+						</div>
+
 					</div>
 			</div>
 			<div class="row pull-right">
@@ -175,6 +194,18 @@
                 $("#noBankCopy").text(filename.replace("C:\\fakepath\\", ""));
             }
         });
+
+		$('#otherDocs').bind('change', function () {
+			var filename = $("#otherDocs").val();
+			if (/^\s*$/.test(filename)) {
+				$(".file-upload").removeClass('active');
+				$("#noOtherDocs").text("No file chosen...");
+			}
+			else {
+				//  		$(".file-upload").addClass('active');
+				$("#noOtherDocs").text(filename.replace("C:\\fakepath\\", ""));
+			}
+		});
 
 
 	</script>

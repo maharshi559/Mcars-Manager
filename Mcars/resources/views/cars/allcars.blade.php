@@ -17,13 +17,13 @@
 			<div class="panel panel-default">
 			  	<div class="panel-body">	
 					<h5 class="text-center">{{$car->brand}} {{$car->carname}}</h5>
-			    	<img src="{{ asset('images/cars/'. $car->carimage ) }}" width="100%">
+			    	<img src="{{ asset('images/cars/thumbnails/'. $car->carimage ) }}" width="100%">
 			   
 			  	</div>
 	  			<div class="panel-footer">
 	  				<p>
 	  					{{$car->carnumber}}
-	  					<span class="pull-right"><i class="fas fa-heart"></i></span>
+
 	  				</p>
 	  			</div>
 			</div>

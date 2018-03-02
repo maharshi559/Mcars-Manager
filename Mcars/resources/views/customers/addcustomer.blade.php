@@ -9,7 +9,7 @@
 
 <div class=" col-md-12" id="addcar-container">
 
-    <form method="POST" action="{{route("vendors.store")}}" enctype="multipart/form-data">
+    <form method="POST" action="{{route("customers.store")}}" enctype="multipart/form-data">
         <div class="col-md-12">
             {{csrf_field()}}
             <div class="col-md-6">
@@ -42,10 +42,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">E-mail*</label>
-                        <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="sample@vendor.com" required>
-                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="email">E-mail*</label>
+                                <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="sample@vendor.com" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="email">Date of Birth*</label>
+                                <input type="text" name="dob" class="form-control" id="exampleInputPassword1" placeholder="yyyy/mm/dd" required>
+                            </div>
+
+
+                            </div>
+                        </div>
                     <div class="form-group">
                         <label for="address">Address*</label>
                         <!-- <textarea class="form-control" rows="3"></textarea> -->
@@ -98,7 +110,7 @@
                 </div>
 
                 <div class="file-upload">
-                    <label for="exampleInputFile">Pan Card Copy*</label>
+                    <label for="exampleInputFile">Pan Card Copy (optional)</label>
                     <div class="file-select">
                         <div class="file-select-button" id="fileName">Choose File</div>
                         <div class="file-select-name" id="noPanCard">No file chosen...</div>
@@ -107,13 +119,15 @@
                 </div>
 
                 <div class="file-upload">
-                    <label for="exampleInputFile">Bank Passbook Copy*</label>
+                    <label for="exampleInputFile">Addditonal Docs (optional)</label>
                     <div class="file-select">
                         <div class="file-select-button" id="fileName">Choose File</div>
-                        <div class="file-select-name" id="noBankCopy">No file chosen...</div>
-                        <input type="file" name="bankcopy" id="bankCopy" >
+                        <div class="file-select-name" id="noAdditionalDocs">No file chosen...</div>
+                        <input type="file" name="additionaldocs" id="additionalDocs" required>
                     </div>
                 </div>
+
+
 
             </div>
         </div>
@@ -165,15 +179,15 @@
 		}
 	});
 
-	$('#bankCopy').bind('change', function () {
-		var filename = $("#bankCopy").val();
+	$('#additionalDocs').bind('change', function () {
+		var filename = $("#additionalDocs").val();
 		if (/^\s*$/.test(filename)) {
 			$(".file-upload").removeClass('active');
-			$("#noBankCopy").text("No file chosen...");
+			$("#noAdditionalDocs").text("No file chosen...");
 		}
 		else {
 			//  		$(".file-upload").addClass('active');
-			$("#noBankCopy").text(filename.replace("C:\\fakepath\\", ""));
+			$("#noAdditionalDocs").text(filename.replace("C:\\fakepath\\", ""));
 		}
 	});
 

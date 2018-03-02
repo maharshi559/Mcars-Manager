@@ -17,6 +17,11 @@
 		font-size: 13px;
 	}
 
+
+	#carimages row{
+		margin-bottom: 40px;
+	}
+
 	#vendor-info{
 		margin-top: 10px;
 	}
@@ -163,6 +168,14 @@
 
 	#email{
 		color: #9b8a30;
+	}
+
+	#address span{
+		color: #1b6d85;
+	}
+
+	#address {
+		text-transform: lowercase;
 	}
 
 	.delete a{

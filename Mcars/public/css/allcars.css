@@ -70,9 +70,12 @@ body{
   opacity: 0;
 }
 
+#allcars-container .col-md-3{
+
+					}
 #allcars-container .panel{
 	/*border:none;*/
-
+	max-width: 200px;
 }
 
 #allcars-container .panel-footer{
@@ -86,7 +89,7 @@ body{
 
 
 #allcars-container .panel:hover{
-	
+
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -95,7 +98,10 @@ body{
 	 margin-right: 0;
 	 min-height: 200px;
 	 max-height: 200px;
-	 
+	z-index: -1;
+	overflow: hidden;
+
+
 }
 
 #allcars-container .panel-body img{
@@ -103,4 +109,15 @@ body{
 	margin-right: auto;
 	display: block;
 	max-width: 100%;
+	min-width: 100%;
+
+}
+
+
+#allcars-container .panel-footer{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	max-width: 100%;
+	z-index: 100;
 }

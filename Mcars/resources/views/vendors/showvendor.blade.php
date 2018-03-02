@@ -7,7 +7,8 @@
 
 	<div class="row  pull-right" id="vendor-operations">
 		<div class="col-md-12">
-			<button class="btn btn-warning btn-sm">Edit</button>
+			<a class="btn btn-small btn-info" href="{{ route('vendors.edit', ['id'=>$vendor->id]) }}">Edit this Vendor</a>
+			{{--<button class="btn btn-warning btn-sm" onclick="">Edit</button>--}}
 			<button class="btn btn-info btn-sm">Disable</button>
 			<button class="btn btn-primary  btn-sm disabled">Add Documents</button>
 		</div>
@@ -48,9 +49,12 @@
 			    	</div>
 			    	<div class="col-md-3">
 				    	
-				    	<h5 class="media-heading"><span id="vendorID"><i class="fas fa-id-badge"></i></span> {{$vendor->id}}</h5>
+				    	<h5 class="media-heading"><span id="vendorID"></span>ID  #{{$vendor->id}}</h5>
 			    	</div>
-		    	</div>
+					<div class="col-md-12">
+						<h5 id="address" class="media-heading"><span><i class="fas fa-map-marker-alt"></i></span> {{$vendor->address}}, {{$vendor->locality}}, {{$vendor->city}},  {{$vendor->state}},  {{$vendor->pincode}}</h5>
+					</div>
+				</div>
 		  	</div>
 	</div>
 
@@ -92,33 +96,38 @@
 				    	<span class="pull-right"><i class="fas fa-folder"></i></span>
 				  </li>
 				  <li class="list-group-item">
-				    Bank Passbook Copy
+
+					  <a href="{{asset('/images/vendors/dlcopy/'.$vendor->dlcopy)}}" target="_blank"> Driving License</a>
+				    <span class="pull-right">
+				    	<i class="fas fa-check-circle "></i>
+				    </span>
+				  </li>
+				  <li class="list-group-item">
+					  <a href="{{asset('/images/vendors/aadharcopy/'.$vendor->aadharcopy)}}" target="_blank">Aadhaar Card</a>
 				    <span class="pull-right">
 				    	<i class="fas fa-check-circle"></i>
 				    </span>
 				  </li>
 				  <li class="list-group-item">
-				    Aadhaar Card
+					  <a href="{{asset('/images/vendors/pancardcopy/'.$vendor->pancardcopy)}}" target="_blank">Pan Card</a>
 				    <span class="pull-right">
 				    	<i class="fas fa-check-circle"></i>
 				    </span>
 				  </li>
 				  <li class="list-group-item">
-				    Cars RC's (merged)
+					  <a href="{{asset('/images/vendors/bankcopy/'.$vendor->bankcopy)}}" target="_blank">Bank Passbook</a>
 				    <span class="pull-right">
 				    	<i class="fas fa-check-circle"></i>
 				    </span>
 				  </li>
 				  <li class="list-group-item">
-				    Cars pollution (merged)
+					  <a href="{{asset('/images/vendors/otherdocs/'.$vendor->otherdocs)}}" target="_blank">Other Documnets</a>
 				    <span class="pull-right">
-				    	<i class="fas fa-check-circle"></i>
-				    </span>
-				  </li>
-				  <li class="list-group-item">
-				    Insurance Copies (merged)
-				    <span class="pull-right">
-				    	<i class="fas fa-check-circle"></i>
+						 @if(!empty($vendor->otherdocs))
+				    	<i class="far fa-check-circle"></i>
+					    @else
+							<i class="far fa-times-circle"></i>
+					    @endif
 				    </span>
 				  </li>
 			</ul>
@@ -424,15 +433,12 @@
 				  
 			</ul>
 
-				{{--<p>Delete this Vendor? <span class="delete"><a type="submit" href="{{ route('vendors.destroy',$vendor->id)}}">Click here</a></span></p>--}}
-
-
-
 
 			<form action="{{ route('vendors.destroy', [$vendor->id])}}" method="POST">
 				<input type="hidden" name="_method" value="DELETE">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<input type="submit" class="btn btn-danger" value="Delete"/>
+				<p>Delete this Vendor?</p>
+					<input type="submit" class="btn btn-danger" value="Delete"/>
 			</form>
 
 					</div>

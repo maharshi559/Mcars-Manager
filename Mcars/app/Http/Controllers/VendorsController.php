@@ -67,7 +67,7 @@ class VendorsController extends Controller
             //save to data base
             $dlimage =$current."-"."dlcopy "."-" .$request->file('dlcopy')->getClientOriginalName();
             //save to folder
-            $request->file('dlcopy')->move(base_path().'/public/images/vendors/bankcopy/', $dlimage);
+            $request->file('dlcopy')->move(base_path().'/public/images/vendors/dlcopy/', $dlimage);
         }
         else{
             $dlimage =Null;
@@ -96,6 +96,17 @@ class VendorsController extends Controller
             $pancardimage =Null;
         }
 
+        if ($request->hasFile('otherdocs')) {
+            //save to data base
+            $otherdocs =$current."-"."otherdocs "."-" .$request->file('otherdocs')->getClientOriginalName();
+            //save to folder
+            $request->file('otherdocs')->move(base_path().'/public/images/vendors/otherdocs/', $otherdocs);
+
+        }
+        else{
+            $otherdocs =Null;
+        }
+
 
 
         $vendor = new Vendor(array(
@@ -104,6 +115,7 @@ class VendorsController extends Controller
             'phonenumber' => $request->get('phonenumber'),
             'altphonenumber'  => $request->get('altphonenumber'),
             'email'  => $request->get('email'),
+            'dob'  => $request->get('dob'),
             'address'  => $request->get('address'),
             'locality'  => $request->get('locality'),
             'city'  => $request->get('city'),
@@ -113,6 +125,8 @@ class VendorsController extends Controller
             'aadharcopy'  =>   $aadharimage,
             'pancardcopy'  => $pancardimage,
             'bankcopy'  =>$bankimage,
+            'otherdocs'  =>$otherdocs,
+
 
 
         ));
@@ -147,6 +161,8 @@ class VendorsController extends Controller
     public function edit($id)
     {
         //
+        $vendor= Vendor::find($id);
+        return view("vendors.editvendor", ["vendor"=>$vendor]);
     }
 
     /**
