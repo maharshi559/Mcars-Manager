@@ -32,9 +32,18 @@ class CreateCarsTable extends Migration
             $table->string('carimage');           
             $table->integer('custprice');
             $table->integer('vendprice');
+            $table->string('pollutioncopy')->nullable();
+            $table->string('insurancecopy')->nullable();
+            $table->string('rccopy')->nullable();
+            $table->string('frontpic')->nullable();
+            $table->string('dsidepic')->nullable();
+            $table->string('psidepic')->nullable();
+            $table->string('backpic')->nullable();
             $table->string('carstatus')->default('Available');
+
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE cars AUTO_INCREMENT = 3118191;");
     }
 
     /**

@@ -19,7 +19,7 @@
             <div class="media panel">
 			<div class="media-left">
 		    	<a href="#">
-		      		<img class="media-object" src="{{ asset('images/cars/'. $car->carimage ) }}" alt="..." width="150px">
+		      		<img class="media-object" src="{{ asset('images/cars/thumbnails/'. $car->carimage ) }}" alt="..." width="150px">
 		    	</a>
 		  	</div>
 		  	<div class="media-body media-middle" id="car-details">

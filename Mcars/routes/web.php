@@ -39,3 +39,6 @@ Route::post('bookings/search', array('uses' => 'BookingsController@search'));
 Route::post('bookings/addcustomer', array('uses' => 'BookingsController@addcustomer'));
 
 
+Route::post('bookings/addstaff', array('uses' => 'BookingsController@addstaff'));
+
+

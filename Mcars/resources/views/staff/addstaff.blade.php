@@ -8,7 +8,7 @@
 
 	<div class=" col-md-12" id="addcar-container">
 
-		<form method="POST" action="{{route("vendors.store")}}" enctype="multipart/form-data">
+		<form method="POST" action="{{route("staff.store")}}" enctype="multipart/form-data">
 			<div class="col-md-12">
 				{{csrf_field()}}
 				<div class="col-md-6">
@@ -72,6 +72,31 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<input type="text" name="pincode" placeholder="Pincode" class="form-control" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="salary">Salary* (Monthly)</label>
+									<input type="number" name="salary" class="form-control" id="exampleInputPassword1" placeholder="10000" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="doj">Date of Joining*</label>
+									<input type="name" name="doj" class="form-control" id="exampleInputPassword1" placeholder="YYYY/MM/DD">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="brand"> Type</label>
+									<select class="form-control" name="type" required>
+										<option value="">Select Member Type</option>
+										<option value="Driving">Driving</option>
+										<option  value="Non-Driving">Non-Driving</option>
+									</select>
 								</div>
 							</div>
 						</div>

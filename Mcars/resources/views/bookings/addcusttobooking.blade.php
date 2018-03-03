@@ -17,7 +17,7 @@
             <input type="checkbox" name="title"><label>Select Existing customer</label>
 
         </div>
-        <form method="POST" action="{{route("customers.index")}}" enctype="multipart/form-data">
+        <form method="POST" action="addstaff" enctype="multipart/form-data">
 
                 {{csrf_field()}}
         <div class="form-group" id="hidden">

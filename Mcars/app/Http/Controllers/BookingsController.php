@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Booking;
 use App\Customer;
+use App\Staff;
 
 
 class BookingsController extends Controller
@@ -61,6 +62,21 @@ class BookingsController extends Controller
         $customers = Customer::all();
 
         return view("bookings.addcusttobooking", ["customers"=>$customers]);
+
+    }
+
+
+    public function addstaff(Request $request)
+    {
+//        $dateFrom =$request->from;
+//        $dateTo = $request->to;
+//
+//        $bookingSearch = new Booking();
+//        $cars= $bookingSearch->search($dateFrom,$dateTo);
+//
+        $staff = Staff::all();
+
+        return view("bookings.bookingstaff", ["staff"=>$staff]);
 
     }
 
