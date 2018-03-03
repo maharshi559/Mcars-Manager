@@ -7,6 +7,7 @@ body{
 	height: 50px;
 	background-color: #fafafa;
 	margin:0;
+	margin-top: 70px;
 	/*margin-bottom: 20px;*/
 }
 
@@ -32,8 +33,26 @@ body{
 	outline: none;
 }
 
+#hidden{
+	display: none;
+}
+
 #submit-button:hover{
 	color: #000;
+}
+
+
+#select-customer{
+	/*border: solid 2px #5DADE2;*/
+	padding: 30px;
+	background-color: #fff;
+
+}
+
+
+#select-customer label{
+	font-weight: 100;
+	color:#777;
 }
 
 #addcar-container{
@@ -44,7 +63,7 @@ body{
 
 #addcar-container label{
 	font-weight: 100;
-	color:#999;
+	color:#777;
 }
 
 #file-upload {

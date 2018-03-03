@@ -8,7 +8,7 @@ class Vendor extends Model
 {
     //
     protected $fillable = [
-        'firstname','lastname', 'phonenumber','altphonenumber','email','address','locality','city','state','pincode','dlcopy','aadharcopy','pancardcopy','bankcopy'
+        'firstname','lastname', 'phonenumber','altphonenumber','email','dob','address','locality','city','state','pincode','dlcopy','aadharcopy','pancardcopy','bankcopy','otherdocs'
 
     ];
 

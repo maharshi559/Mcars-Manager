@@ -32,3 +32,10 @@ Route::resource('customers', 'CustomerController');
 
 Route::resource('bookings', 'BookingsController');
 
+//Route::post('bookings', 'BookingsController@search');
+Route::post('bookings/search', array('uses' => 'BookingsController@search'));
+
+
+Route::post('bookings/addcustomer', array('uses' => 'BookingsController@addcustomer'));
+
+

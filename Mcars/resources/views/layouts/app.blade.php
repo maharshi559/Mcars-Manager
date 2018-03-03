@@ -14,14 +14,20 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
 
@@ -116,105 +122,10 @@
         </nav>
        
 
-
         <div class="wrapper">
             <!-- Sidebar Holder -->
             @auth
-
-                    <nav id="sidebar">
-                        <div class="sidebar-header">
-                            <h5 id="user"></h5>
-                        </div>
-
-                        <ul class="list-unstyled components">
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-circle-notch"></i>&nbsp;&nbsp;
-                                    <span class="text">Dashboard</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
-                                    <i class="fas fa-users"></i>&nbsp;&nbsp;
-                                    <span class="text">Vendors</span>
-                                    <span class="pull-right"><i class="fas fa-caret-down"></i></span>
-                                </a>
-                                <ul class="collapse list-unstyled" id="homeSubmenu">
-                                    <li><a href="{{ route('vendors.index') }}"><span class="text">All Vendors</span></a></li>
-                                    <li><a href="{{ route('vendors.create') }}"><span class="text">Add Vendor</span></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                                    <i class="fas fa-car"></i>&nbsp;&nbsp;
-                                    <span class="text">Cars</span>
-                                    <span class="pull-right"><i class="fas fa-caret-down"></i></span>
-                                </a>
-                                <ul class="collapse list-unstyled" id="pageSubmenu">
-                                    <li><a href="{{ route('cars.index') }}"><span class="text">All Cars</span></a></li>
-                                    <li><a href="{{ route('cars.create') }}"><span class="text">Add Car</span></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#customerSubmenu" data-toggle="collapse" aria-expanded="false">
-                                    <i class="fas fa-user-secret"></i>&nbsp;&nbsp;
-                                    <span class="text">Customers</span>
-                                    <span class="pull-right"><i class="fas fa-caret-down"></i></span>
-                                </a>
-                                <ul class="collapse list-unstyled" id="customerSubmenu">
-                                    <li><a href="{{ route('customers.index') }}"><span class="text">All Customers</span></a></li>
-                                    <li><a href="{{ route('customers.create') }}"><span class="text">Add Customers</span></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#staffSubmenu" data-toggle="collapse" aria-expanded="false">
-                                    <i class="fas fa-cogs"></i>&nbsp;&nbsp;
-                                    <span class="text">Staff</span>
-                                    <span class="pull-right"><i class="fas fa-caret-down"></i></span>
-                                </a>
-                                <ul class="collapse list-unstyled" id="staffSubmenu">
-                                    <li><a href="{{ route('staff.index') }}"><span class="text">All Staff</span></a></li>
-                                    <li><a href="{{ route('staff.create') }}"><span class="text">Add Staff</span></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="{{ route('bookings.create') }}">
-                                    <i class="fas fa-road"></i>&nbsp;&nbsp;
-                                    <span class="text">Bookings</span>
-                                    <!-- <span class="pull-right"><i class="fas fa-caret-down"></i></span> -->
-                                </a><!--
-                        <ul class="collapse list-unstyled" id="bookingSubmenu">
-                            <li><a href="#">All Staff</a></li>
-                            <li><a href="#">Add Staff</a></li>
-                        </ul> -->
-                            </li>
-                            <li>
-                                <a href="#" data-toggle="collapse" aria-expanded="false">
-                                    <i class="fas fa-credit-card"></i>&nbsp;&nbsp;
-                                    <span class="text">Billings</span>
-                                    <!-- <span class="pull-right"><i class="fas fa-caret-down"></i></span> -->
-                                </a>
-                                <!-- <ul class="collapse list-unstyled" id="billingSubmenu">
-                                    <li><a href="#">All Staff</a></li>
-                                    <li><a href="#">Add Staff</a></li>
-                                </ul> -->
-                            </li>
-                            <li>
-                                <a href="#billingSubmenu" data-toggle="collapse" aria-expanded="false">
-                                    <i class="fas fa-wrench"></i>&nbsp;&nbsp;
-                                    <span class="text">Manage</span>
-                                    <span class="pull-right"><i class="fas fa-caret-down"></i></span>
-                                </a>
-                                <ul class="collapse list-unstyled" id="billingSubmenu">
-                                    <li><a href="#"><span class="text">Users</span></a></li>
-                                    <li><a href="#"><span class="text">Add Users</span></a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </nav>
-
-
+                @include('layouts.sidebar')
 
 
             @endauth
@@ -238,11 +149,9 @@
         </div>
 
 
-
-
-
         <!-- jQuery CDN -->
-         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+        {{--<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>--}}
          <!-- Bootstrap Js CDN -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -258,13 +167,25 @@
                  });
 
                  username = $('.user').text();
-                 console.log("sidebar: "+username);
 
                  firstname = username.split(" ",1);
-                 console.log("sidebar: "+firstname[0]);
                  $("#user").html(firstname[0]);
 //                 $('#user').HTML= firstname[0];
              });
+
+
+
+       
+
+             /*Side bar Toggle*/
+             $("#sidebarCollapse").click(function(e) {
+                 console.log("hits");
+                 e.preventDefault();
+                 $(".wrapper").toggleClass("active");
+             });
+
+
+             
          </script>
 
 

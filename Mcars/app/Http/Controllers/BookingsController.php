@@ -3,17 +3,65 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Booking;
+use App\Customer;
+
 
 class BookingsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
         //
+
+    }
+
+
+    public function search(Request $request)
+    {
+        $dateFrom =$request->from;
+        $dateFrom=$this->dateFormat($dateFrom);
+        $dateTo = $request->to;
+        $dateTo=$this->dateFormat($dateTo);
+        $bookingSearch = new Booking();
+        $cars= $bookingSearch->search($dateFrom,$dateTo);
+
+
+
+        return view("bookings.addbooking", ["cars"=>$cars]);
+
+    }
+
+
+
+    public function dateFormat($date){
+            $dateFromsplit=explode(',',$date);
+            $datesplit=explode('/',$dateFromsplit[0]);
+            $datesplit=array_reverse($datesplit);
+            $date=implode('-',$datesplit);
+            $dateTime=$date." ".$dateFromsplit[1];
+            return $dateTime;
+
+      }
+
+    public function addcustomer(Request $request)
+    {
+//        $dateFrom =$request->from;
+//        $dateTo = $request->to;
+//
+//        $bookingSearch = new Booking();
+//        $cars= $bookingSearch->search($dateFrom,$dateTo);
+//
+        $customers = Customer::all();
+
+        return view("bookings.addcusttobooking", ["customers"=>$customers]);
+
     }
 
     /**
@@ -24,7 +72,8 @@ class BookingsController extends Controller
     public function create()
     {
         //
-        return view("bookings.addbooking");
+        $cars=[];
+        return view("bookings.addbooking", ["cars"=>$cars]);
     }
 
     /**

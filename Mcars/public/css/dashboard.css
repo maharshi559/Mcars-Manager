@@ -7,6 +7,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: #fafafa;
+
 }
 
 .text{
@@ -25,6 +26,7 @@ a, a:hover, a:focus {
     border-radius: 0;
     margin-bottom: 0px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+
 }
 
 .navbar .container{
@@ -61,21 +63,53 @@ i, span {
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
+/*.wrapper {*/
+    /*display: flex;*/
+/*}*/
+
+/*#sidebar {*/
+    /*min-width: 200px;*/
+    /*max-width: 200px;*/
+    /*background: #333;*/
+    /*color: #fff;*/
+    /*transition: all 0.3s;*/
+    /*height: 100%;*/
+    /*position:fixed;*/
+    /*z-index: 1;*/
+
+
+
+
 .wrapper {
-    display: flex;
+    padding-left: 200px;
+    transition: all 0.4s ease 0s;
 }
 
-#sidebar {
-    min-width: 200px;
-    max-width: 200px;
-    background: #333;
-    color: #fff;
-    transition: all 0.3s;
-    height: auto;
-
+#sidebar-wrapper{
+    margin-left: -200px;
+    left: 200px;
+    width: 200px;
+    background: #000;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.4s ease 0s;
 }
 
-#content{width:100%}
+.wrapper.active {
+    padding-left: 0;
+}
+
+.wrapper.active #sidebar-wrapper {
+    left: 0;
+}
+
+
+#content{
+    width:100%;
+
+}
 
 
 #sidebar.active {

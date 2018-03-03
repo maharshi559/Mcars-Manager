@@ -50,6 +50,7 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
+        $current =now();
 
         if ($request->hasFile('carimage')) {
 
@@ -61,16 +62,86 @@ class CarsController extends Controller
             //save to data base
             $carimage =$request->file('carimage')->getClientOriginalName();
             //save to folder
-            $request->file('carimage')->move(base_path().'/public/images/vendors/bankcopy/', $carimage);
+            $request->file('carimage')->move(base_path().'/public/images/cars/thumbnails/', $carimage);
         }
         else{
             $carimage ="default-car.png";
         }
 
-		
-		
+        if ($request->hasFile('pollutioncopy')) {
+            //save to data base
+            $pollutionimage =$current."-"."pollutioncopy "."-" .$request->file('pollutioncopy')->getClientOriginalName();
+            //save to folder
+            $request->file('pollutioncopy')->move(base_path().'/public/images/cars/pollutioncopy/', $pollutionimage);
+        }
+        else{
+            $pollutionimage =Null;
+        }
 
-   $car = new Car(array(
+
+        if ($request->hasFile('insurancecopy')) {
+            //save to data base
+            $insuranceimage =$current."-"."insurancecopy "."-" .$request->file('insurancecopy')->getClientOriginalName();
+            //save to folder
+            $request->file('insurancecopy')->move(base_path().'/public/images/cars/insurancecopy/', $insuranceimage);
+        }
+        else{
+            $insuranceimage =Null;
+        }
+
+        if ($request->hasFile('rccopy')) {
+            //save to data base
+            $rcimage =$current."-"."rccopy "."-" .$request->file('rccopy')->getClientOriginalName();
+            //save to folder
+            $request->file('rccopy')->move(base_path().'/public/images/cars/rccopy/', $rcimage);
+        }
+        else{
+            $rcimage =Null;
+        }
+
+        if ($request->hasFile('frontpic')) {
+            //save to data base
+            $frontimage =$current."-"."frontpic "."-" .$request->file('frontpic')->getClientOriginalName();
+            //save to folder
+            $request->file('frontpic')->move(base_path().'/public/images/cars/frontpic/', $frontimage);
+        }
+        else{
+            $frontimage =Null;
+        }
+
+        if ($request->hasFile('dsidepic')) {
+            //save to data base
+            $dimage =$current."-"."dsidepic "."-" .$request->file('dsidepic')->getClientOriginalName();
+            //save to folder
+            $request->file('dsidepic')->move(base_path().'/public/images/cars/dsidepic/', $dimage);
+        }
+        else{
+            $dimage =Null;
+        }
+
+        if ($request->hasFile('psidepic')) {
+            //save to data base
+            $pimage =$current."-"."psidepic "."-" .$request->file('psidepic')->getClientOriginalName();
+            //save to folder
+            $request->file('psidepic')->move(base_path().'/public/images/cars/psidepic/', $pimage);
+        }
+        else{
+            $pimage =Null;
+        }
+
+        if ($request->hasFile('backpic')) {
+            //save to data base
+            $backimage =$current."-"."frontpic "."-" .$request->file('backpic')->getClientOriginalName();
+            //save to folder
+            $request->file('backpic')->move(base_path().'/public/images/cars/backpic/', $backimage);
+        }
+        else{
+            $frontimage =Null;
+        }
+
+
+
+        $car = new Car(array(
               'brand' => $request->get('brand'),
               'carname' => $request->get('carname'),
               'carnumber'  => $request->get('carnumber'),
@@ -87,8 +158,15 @@ class CarsController extends Controller
               'vendorname'  => $request->get('vendorname'),
               'carimage'  => $carimage,
               'custprice'  => $request->get('custprice'),
-              'vendprice'  => $request->get('vendprice')
-                         
+              'vendprice'  => $request->get('vendprice'),
+              'pollutioncopy'  => $pollutionimage,
+              'insurancecopy'  => $insuranceimage,
+              'rccopy'  => $rcimage,
+              'frontpic'  => $frontimage,
+              'dsidepic'  => $dimage,
+              'psidepic'  => $pimage,
+              'backpic'  => $backimage,
+
                          
                                         
             ));

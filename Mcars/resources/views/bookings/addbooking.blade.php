@@ -1,111 +1,132 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="{{ asset('css/addbooking.css') }}" >
-	<div id="add-car" class="col-md-12">
-			<h2>ADD NEW RESERVATION</h2>
+
+
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/addvendor.css') }}" >
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/addbooking.css') }}" >
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/allcars.css') }}" >
+
+	<form method="POST" action="search" enctype="multipart/form-data">
+		{{csrf_field()}}
+	<div class="container-fluid" id="booking-container">
+		<div class="col-md-12">
+			<h1>CREATE A NEW BOOKING</h1>
+		</div>
+		<div class='col-md-5'>
+			<div class="form-group">
+				<div class='input-group date' id='datetimepicker6'>
+					<input type='text' name="from" class="form-control" placeholder="From" />
+					<span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+				</div>
+			</div>
+		</div>
+		<div class='col-md-5'>
+			<div class="form-group">
+				<div class='input-group date' id='datetimepicker7'>
+					<input type='text' name="to" class="form-control" placeholder="To" />
+					<span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+				</div>
+			</div>
+		</div>
+		<div class='col-md-2'>
+			<div class="form-group">
+				<button type="submit" class="btn btn-default" id="search">Search</button>
+			</div>
+		</div>
+	</div>
+	</form>
+
+	@if(!empty($cars))
+	<div id="allcars">
+		<h2>
+			AVAILABLE CARS
+			<span class="pull-right"><i class="fas fa-sliders-h"></i></span>
+		</h2>
 	</div>
 
-<form>
-<div class="col-md-12" id="addcar-container">
+	<div class="container-fluid" id="allcars-container">
+		@foreach($cars as $car)
 
+				<div class="col-md-3">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h5 class="text-center">{{$car->brand}} {{$car->carname}}</h5>
+							<img src="{{ asset('images/cars/thumbnails/'. $car->carimage ) }}" width="100%">
 
-		<div class="col-md-6">
-			<div class="row">
-				<div class="col-md-8">
-					<div class="form-group">
-						<label for="From">From</label>
-						<input type="date" class="form-control" name="from" placeholder="Ex. 12/12/2012" required>
+						</div>
+						<div class="panel-footer">
+							<p>
+								{{$car->carnumber}}
+							<form method="POST" action="addcustomer" enctype="multipart/form-data">
+								{{csrf_field()}}
+								<button type="submit" class="btn btn-default btn-sm pull-right">Book</button>
+							</form>
+							</p>
+
+						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label for="FromTime">Time</label>
-						<input type="time" class="form-control" name="fromtime" id="fromtime" placeholder="Ex. 03:00pm" required>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-		  		<div class="col-md-8">
-			  	<div class="form-group">
-		    		<label for="To">To</label>
-		    		<input type="date" class="form-control" name="to" id="to" placeholder="Ex. 12/12/2012" required>
-		  		</div>
-			</div>
-				<div class="col-md-4">
-			  	<div class="form-group">
-		    		<label for="FromTime">Time</label>
-		    		<input type="time" class="form-control" name="totime" id="totime" placeholder="Ex. 03:00pm" required>
-		  		</div>
-		  	</div>
-			</div>
-	    </div>
 
-	    <div class="col-md-6">
-			<div class="row">
-				{{--Calendar starts here--}}
-
-				<table class="table">
-					<thead>
-						<th>sun</th>
-						<th>mon</th>
-						<th>tue</th>
-						<th>wed</th>
-						<th>thu</th>
-						<th>fri</th>
-						<th>sat</th>
-					</thead>
-					<tr id="firstweek">
-
-					</tr>
-				</table>
-
-			</div>
-	    </div>
-
-</div>
-</form>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-
-<script>
-	{{--Assigning months in an array--}}
-	var months = ["Jan","Feb","Mar","Apr","May","June","July","Aug","Sept","Oct","Nov","Dec"];
-	var days = ["sunday", "monday", "tuesday", "wednesday", "thursday","friday", "satday"];
-
-	var date = new Date();
-	var currentMonth = date.getMonth();
-	var currentYear = date.getFullYear();
-	console.log("year: "+currentYear);
-	console.log(months[currentMonth-1]);
-
-	var monthStart = new Date(currentYear,currentMonth,1);
-	var monthStartDate = monthStart.getDay();
-	console.log(monthStartDate);
+		@endforeach
+	</div>
 
 
-	$(document).ready(function () {
-var day=1;
+	@endif
 
-//		for(var i=0; i<date.getDate();i++){
-//			console.log(i);
-//			$(".table").append("<tr>"+week()+"</tr>")
-//		}
 
-	 function week() {
-			for (var i=0;i<7;i++){
-				$("#firstweek").append("<td>"+date.getDate()+"</td>");
-			}
-		}
 
-	});
-	//document.getElementById("firstweek").innerHTML("<td>"+monthStartDate+"</td>");
-</script>
+	{{--date picker scripts--}}
 
-	@endsection
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
+	{{--END of date picker scripts--}}
+
+
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(function () {
+
+
+				$('#datetimepicker6').datetimepicker({
+					format: "DD/MM/YYYY, HH:mm:ss"
+				});
+				$('#datetimepicker7').datetimepicker({
+					useCurrent: false,
+					format: "DD/MM/YYYY, HH:mm:ss"//Important! See issue #1075
+				});
+				$("#datetimepicker6").on("dp.change", function (e) {
+					$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+				});
+				$("#datetimepicker7").on("dp.change", function (e) {
+					$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+				});
+			});
+		});
+	</script>
+
+
+
+
+@endsection
 
 
 

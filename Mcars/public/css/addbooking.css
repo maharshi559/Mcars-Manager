@@ -42,6 +42,7 @@ body{
 	margin-top:20px;
 	color: #999999;
 	width: 100%;
+	margin-bottom: 60px;
 	/*margin-bottom: 20px;*/
 }
 
@@ -49,7 +50,7 @@ body{
 	
 	font-size: 20px;
 	color: #aaa;
-	font-weight: 900px;
+	font-weight: 900;
 }
 
 
@@ -67,16 +68,47 @@ body{
 	color: #000;
 }
 
-#addcar-container{
+#booking-container{
 	/*border: solid 2px #5DADE2;*/
 	padding: 30px;
 	width: auto;
 	background-color: #fff;
+	margin-top: 70px;
+	background-image: url("../images/bookingbg.jpg");
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	margin-bottom: 20px;
+}
+
+#allcars-container{
+	/*border: solid 2px #5DADE2;*/
+	padding: 30px;
+	width: auto;
+	background-color: #fff;
+	/*margin-top: 20px;*/
+	/*margin-bottom: 20px;*/
 }
 
 #addcar-container label{
 	font-weight: 100;
 	color:#999;
+}
+
+
+#allcars{
+	display: block;
+	height: 50px;
+	background-color: #fafafa;
+	margin:0;
+	/*margin-bottom: 20px;*/
+}
+
+#allcars h2{
+	padding: 15px;
+	font-size: 20px;
+	color: #aaa;
+	font-weight: 900px;
 }
 
 
@@ -132,4 +164,43 @@ body{
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
+}
+
+#datetimepicker6 .input-group-addon, #datetimepicker7 .input-group-addon{
+	background: transparent;
+	border-radius: 0;
+	border-left: none;
+
+}
+
+#datetimepicker6 .form-control, #datetimepicker7 .form-control{
+	background: transparent;
+	border-radius: 0;
+	border-right: none;
+	outline:none;
+	color: #dddddd;
+}
+
+#datetimepicker6 span, #datetimepicker7 span{
+	background: transparent;
+	border-radius: 0;
+	outline:none;
+	color: #dddddd;
+}
+
+#search{
+	background: transparent;
+	border-radius: 0;
+	font-family: "Segoe UI", Arial;
+	font-weight: 600;
+	border: 1px solid #dddddd;
+	text-decoration: none;
+	text-shadow: none;
+	color: #dddddd;
+}
+
+#booking-container .col-md-12{
+	text-align: center;
+	color: #CCCCCC;
+	padding-bottom: 20px;
 }
