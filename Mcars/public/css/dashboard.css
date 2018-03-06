@@ -10,8 +10,9 @@ body {
 
 }
 
-.text{
+.flash-message{
 
+    margin-top: 70px;
 }
 
 a, a:hover, a:focus {
@@ -63,9 +64,9 @@ i, span {
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
-/*.wrapper {*/
-    /*display: flex;*/
-/*}*/
+.wrapper {
+    display: flex;
+}
 
 /*#sidebar {*/
     /*min-width: 200px;*/
@@ -171,11 +172,16 @@ ul ul a {
     MEDIAQUERIES
 ----------------------------------------------------- */
 @media (max-width: 768px) {
+
+    body{
+        overflow: scroll;
+    }
+
     #sidebar {
-        min-width: 80px;
-        max-width: 80px;
+        min-width: 20px;
+        max-width: 200px;
         text-align: center;
-        margin-left: -80px !important ;
+        /*padding-left: 20px !important ;*/
         position: fixed;
     }
     a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
@@ -186,9 +192,9 @@ ul ul a {
         -ms-transform: translateX(50%);
         transform: translateX(50%);
     }
-    #sidebar.active {
-        margin-left: 0 !important;
-    }
+
+
+
 
     #sidebar .sidebar-header h3, #sidebar .CTAs {
         display: none;
@@ -199,11 +205,13 @@ ul ul a {
     }
 
     #sidebar ul li a {
-        padding: 20px 10px;
+        padding: 20px 20px;
+        width: 200px;
     }
 
     #sidebar ul li a span {
         font-size: 0.85em;
+        display: inline;
     }
     #sidebar ul li a i {
         margin-right:  0;
@@ -220,9 +228,9 @@ ul ul a {
     #sidebar {
         margin-left: 0;
     }
-    #sidebarCollapse span {
-        display: none;
-    }
+    /*#sidebarCollapse span {*/
+        /*display: none;*/
+    /*}*/
 }
 
 li a{

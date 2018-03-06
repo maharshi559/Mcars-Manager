@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home   ');
 });
 
 Auth::routes();
@@ -40,5 +40,9 @@ Route::post('bookings/addcustomer', array('uses' => 'BookingsController@addcusto
 
 
 Route::post('bookings/addstaff', array('uses' => 'BookingsController@addstaff'));
+
+
+
+
 
 

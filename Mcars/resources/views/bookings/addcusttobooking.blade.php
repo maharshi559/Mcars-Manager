@@ -3,8 +3,6 @@
 @section('content')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/addvendor.css') }}" >
 
-
-
     <div id="add-car">
         <h2>ADD NEW CUSTOMER</h2>
     </div>
@@ -17,12 +15,12 @@
             <input type="checkbox" name="title"><label>Select Existing customer</label>
 
         </div>
-        <form method="POST" action="addstaff" enctype="multipart/form-data">
+        <form method="POST" action="addstaff" id="existingCustomerForm" enctype="multipart/form-data">
 
                 {{csrf_field()}}
         <div class="form-group" id="hidden">
-            <label for="vendor">Select from existing customer</label>
-            <select class="form-control" name="vendorname" required>
+            {{--<label for="vendor">Select from existing customer</label>--}}
+            <select class="form-control" id="existingCustomer" name="vendorname" required>
                 <option hidden value="">Select customer</option>
                 @foreach($customers as $customer)
                     <option value="{{$customer->id}}">{{$customer->firstname}}  {{$customer->lastname}} </option>
@@ -32,7 +30,7 @@
             <div class="row pull-right">
                 <div class="col-md-12">
 
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    {{--<button type="submit" class="btn btn-success">Submit</button>--}}
                 </div>
             </div>
         </div>
@@ -42,22 +40,56 @@
 
     <div class=" col-md-12" id="addcar-container">
 
-        <form method="POST" action="{{route("customers.store")}}" enctype="multipart/form-data">
+        <form method="POST" action="" enctype="multipart/form-data">
             <div class="col-md-12">
                 {{csrf_field()}}
-                <div class="col-md-6">
+
+                <div class="row">
+                    <div class='col-md-5'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker6'>
+                                <input type='text' name="from" class="form-control"  placeholder="From" />
+                                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-md-5'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker7'>
+                                <input type='text' name="to" class="form-control" placeholder="To" />
+                                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-md-2'>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default" id="search">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-8 col-md-offset-2">
                     <div class="row">
                         <div class="row">
+
+{{--                       <p>     {{$data.firstname}}</p>--}}
+
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="firstname">First Name*</label>
-                                    <input type="text" name="firstname" class="form-control" id="exampleInputEmail1" placeholder="Ram/Tarun" required>
+                                    <input type="text" value="{{$data['firstname']}}" name="firstname"  class="form-control" id="exampleInputEmail1" placeholder="Ram/Tarun" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="lastname">Last Name*</label>
-                                    <input type="text" name="lastname" class="form-control" id="exampleInputEmail1" placeholder="Ram/Tarun" required>
+                                    <input type="text" name="lastname" value="{{$data['lastname']}}" class="form-control" id="exampleInputEmail1" placeholder="Ram/Tarun" required>
                                 </div>
                             </div>
                         </div>
@@ -65,13 +97,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="phonenumber">Phone Number*</label>
-                                    <input type="text" name="phonenumber" class="form-control" id="exampleInputPassword1" placeholder="9440981234" required>
+                                    <input type="text" name="phonenumber" class="form-control" value="{{$data['phonenumber']}}" id="exampleInputPassword1" placeholder="9440981234" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="altphonenumber">Alternate Phone Number (optional)</label>
-                                    <input type="text" name="altphonenumber" class="form-control" id="exampleInputPassword1" placeholder="9440981234">
+                                    <input type="text" name="altphonenumber"  value="{{$data['altphonenumber']}}"class="form-control" id="exampleInputPassword1" placeholder="9440981234">
                                 </div>
                             </div>
                         </div>
@@ -79,13 +111,13 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label for="email">E-mail*</label>
-                                    <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="sample@vendor.com" required>
+                                    <input type="email" name="email" value="{{$data['email']}}" class="form-control" id="exampleInputPassword1" placeholder="sample@vendor.com" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="email">Date of Birth*</label>
-                                    <input type="text" name="dob" class="form-control" id="exampleInputPassword1" placeholder="yyyy/mm/dd" required>
+                                    <input type="text" name="dob"  value="{{$data['dob']}}" class="form-control" id="exampleInputPassword1" placeholder="yyyy/mm/dd" required>
                                 </div>
 
 
@@ -94,17 +126,17 @@
                         <div class="form-group">
                             <label for="address">Address*</label>
                             <!-- <textarea class="form-control" rows="3"></textarea> -->
-                            <input type="text" name="address" class="form-control" placeholder="H.no, street" required>
+                            <input type="text" name="address" class="form-control" value="{{$data['address']}}" placeholder="H.no, street" required>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="locality" placeholder=" Locality, Area" class="form-control" required>
+                                    <input type="text" name="locality" value="{{$data['locality']}}" placeholder=" Locality, Area" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="city" placeholder="City" class="form-control" required>
+                                    <input type="text" name="city"  value="{{$data['city']}}" placeholder="City" class="form-control" required>
                                 </div>
                             </div>
 
@@ -112,58 +144,38 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="state" placeholder="State" class="form-control" required>
+                                    <input type="text" name="state"  value="{{$data['state']}}" placeholder="State" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="pincode" placeholder="Pincode" class="form-control" required>
+                                    <input type="text" name="pincode" value="{{$data['pincode']}}" placeholder="Pincode" class="form-control" required>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="file-upload">
-                        <label for="exampleInputFile">Driving License copy*</label>
-                        <div class="file-select">
-                            <div class="file-select-button" id="fileName">Choose File</div>
-                            <div class="file-select-name" id="noDlCopy">No file chosen...</div>
-                            <input type="file" name="dlcopy" id="dlCopy" required>
-                        </div>
-                    </div>
 
-                    <div class="file-upload">
-                        <label for="exampleInputFile">Aadhaar Copy*</label>
-                        <div class="file-select">
-                            <div class="file-select-button" id="fileName">Choose File</div>
-                            <div class="file-select-name" id="noAadharCopy">No file chosen...</div>
-                            <input type="file" name="aadharcopy" id="aadharCopy" required>
-                        </div>
-                    </div>
-
-                    <div class="file-upload">
-                        <label for="exampleInputFile">Pan Card Copy (optional)</label>
-                        <div class="file-select">
-                            <div class="file-select-button" id="fileName">Choose File</div>
-                            <div class="file-select-name" id="noPanCard">No file chosen...</div>
-                            <input type="file" name="pancardcopy" id="panCard" required>
-                        </div>
-                    </div>
-
-                    <div class="file-upload">
-                        <label for="exampleInputFile">Addditonal Docs (optional)</label>
-                        <div class="file-select">
-                            <div class="file-select-button" id="fileName">Choose File</div>
-                            <div class="file-select-name" id="noAdditionalDocs">No file chosen...</div>
-                            <input type="file" name="additionaldocs" id="additionalDocs" required>
-                        </div>
-                    </div>
-
-
-
+                <div class="form-group col-md-6">
+                    <label for="vendor">Assign Delivering Staff (optional)</label>
+                    <select class="form-control" id="deliveryStaff" name="vendorname">
+                        <option hidden value="">No selection</option>
+                        @foreach($staff as $staf)
+                            <option value="{{$staf->id}}">{{$staf->firstname}}  {{$staf->lastname}} </option>
+                        @endforeach
+                    </select>
                 </div>
-            </div>
+
+                <div class="form-group col-md-6">
+                    <label for="vendor">Assign Pickup Staff (optional)</label>
+                    <select class="form-control" id="deliveryStaff" name="vendorname">
+                        <option hidden value="">No selection</option>
+                        @foreach($staff as $staf)
+                            <option value="{{$staf->id}}">{{$staf->firstname}}  {{$staf->lastname}} </option>
+                        @endforeach
+                    </select>
+                </div>
+
             <div class="row pull-right">
                 <div class="col-md-12">
                     <button type="reset"  class="btn btn-default">Reset</button>
@@ -234,9 +246,15 @@
             $('input[type="checkbox"]').click(function(){
                // var item = $(this).attr('name');
                 $('#hidden').toggle();
-                $('#addcar-container').toggle();
+               // $('#addcar-container').toggle();
             });
+
+            $('#existingCustomer').on('change', function () {
+                $('#existingCustomerForm').submit();
+            })
         });
+
+
 
     </script>
 @endsection

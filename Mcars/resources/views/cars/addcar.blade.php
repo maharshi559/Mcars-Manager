@@ -7,6 +7,7 @@
 	</div>
 
 <div class="container col-md-12" id="addcar-container">
+
 	<form method="POST" action="{{route("cars.store")}}" enctype="multipart/form-data">
 		{{csrf_field()}}
 		<div class="col-md-12">
@@ -50,8 +51,17 @@
 		  			</div>
 			  		<div class="col-md-4">
 				  		<div class="form-group">
-				    		<label for="year">Year</label>
-				    		<input type="text" name="year" class="form-control" id="exampleInputEmail1" placeholder="Ex. 2009/2018" required>
+							<label for="vendor">Year</label>
+							<select class="form-control" name="year" required>
+								<option hidden value="">Select Vendor</option>
+								@for ($i = 2020; $i >= 2000; $i--)
+									{{--The current value is {{ $i }}--}}
+									<option value="{{$i}}">{{$i}} </option>
+								@endfor
+								{{--@foreach($vendors as $vendor)--}}
+								{{--<option value="{{$vendor->id}}">{{$vendor->firstname}}  {{$vendor->lastname}} </option>--}}
+								{{--@endforeach--}}
+							</select>
 				  		</div>
 			  		</div>
 			  		<div class="col-md-4">

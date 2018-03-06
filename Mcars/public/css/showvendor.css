@@ -188,3 +188,17 @@
 		color: white;
 		padding: 10px;
 	}
+
+
+
+	@media (max-width: 768px) {
+
+		#placeholder{
+			font-size: 18px;
+			padding: 10px;
+		}
+
+		.media-body{
+			padding-left: 0px;
+		}
+	}

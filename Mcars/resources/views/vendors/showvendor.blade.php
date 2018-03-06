@@ -6,7 +6,7 @@
 <div class="container col-md-12">
 
 	<div class="row  pull-right" id="vendor-operations">
-		<div class="col-md-12">
+		<div class="col-md-12 col-xs-12">
 			<a class="btn btn-small btn-info" href="{{ route('vendors.edit', ['id'=>$vendor->id]) }}">Edit this Vendor</a>
 			{{--<button class="btn btn-warning btn-sm" onclick="">Edit</button>--}}
 			<button class="btn btn-info btn-sm">Disable</button>
@@ -15,39 +15,39 @@
 	</div>
 
     <div class="row">
-        <div class="col-md-12" id="vendor-profile">
+        <div class="col-md-12 col-xs-12" id="vendor-profile">
             <div class="media panel">
 			<div class="media-left">
 		    	<a href="#">
 
-					<div id="placeholder">
+					<div id="placeholder" class="col-xs-12">
 						<h1>{{substr($vendor->firstname, 0,1)}}{{substr($vendor->lastname, 0,1)}}</h1>
 					</div>
 				</a>
 		  	</div>
 		  	<div class="media-body media-middle">
-		  		<div class="row">
+		  		<div class="row  col-xs-12">
 			  		<div class="col-md-8">
 				    	<h2 class="media-heading">{{$vendor->firstname}} {{$vendor->lastname}} </h2>
 				    	
 			    	</div>
 			    	
 		    	</div>
-		    	<div class="row" id="vendor-info">
+		    	<div class="row col-xs-12" id="vendor-info">
 
-			    	<div class="col-md-3">
+			    	<div class="col-md-3 col-xs-12">
 				    	<h5 class="media-heading"><span id="active"><i class="fas fa-child"></i></span> Active</h5>
 				    	<!-- <p>Since May, 2016</p> -->
 			    	</div>
-					<div class="col-md-3">
+					<div class="col-md-3 col-xs-12">
 						<h5 class="media-heading"><span id="email"><i class="fas fa-envelope"></i></span> {{$vendor->email}}</h5>
 						<!-- <p>Since May, 2016</p> -->
 					</div>
-			    	<div class="col-md-3">
+			    	<div class="col-md-3 col-xs-12">
 				    	<h5 class="media-heading"><span id="phone"><i class="fas fa-phone"></i></span> {{$vendor->phonenumber}}</h5>
 				    	<!-- <p>Since May, 2016</p> -->
 			    	</div>
-			    	<div class="col-md-3">
+			    	<div class="col-md-3 col-xs-12">
 				    	
 				    	<h5 class="media-heading"><span id="vendorID"></span>ID  #{{$vendor->id}}</h5>
 			    	</div>
@@ -613,5 +613,6 @@
 		</div>
 	</div>
 </div>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
 @endsection

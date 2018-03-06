@@ -7,6 +7,7 @@ body{
 	height: 50px;
 	background-color: #fafafa;
 	margin:0;
+	margin-top: 70px;
 	/*margin-bottom: 20px;*/
 }
 
@@ -24,7 +25,7 @@ body{
 	background-color: #fff;
 	overflow: scroll;
 	overflow-x: hidden;
-	height: 100vh;
+	height: auto;
 }
 
 #allvendors-container label{

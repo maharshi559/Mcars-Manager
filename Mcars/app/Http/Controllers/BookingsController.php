@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Booking;
 use App\Customer;
@@ -20,7 +21,7 @@ class BookingsController extends Controller
     public function index()
     {
         //
-
+        return view("bookings.allbookings");
     }
 
 
@@ -33,9 +34,8 @@ class BookingsController extends Controller
         $bookingSearch = new Booking();
         $cars= $bookingSearch->search($dateFrom,$dateTo);
 
-
-
-        return view("bookings.addbooking", ["cars"=>$cars]);
+         $dates =["from"=>$dateFrom,"to"=>$dateTo];
+        return view("bookings.addbooking", ["cars"=>$cars,"date"=>$dates]);
 
     }
 
@@ -46,38 +46,33 @@ class BookingsController extends Controller
             $datesplit=explode('/',$dateFromsplit[0]);
             $datesplit=array_reverse($datesplit);
             $date=implode('-',$datesplit);
-            $dateTime=$date." ".$dateFromsplit[1];
-            return $dateTime;
+           // $dateTime=$date." ".$dateFromsplit[1];
+            //return $dateTime;
 
       }
 
     public function addcustomer(Request $request)
     {
-//        $dateFrom =$request->from;
-//        $dateTo = $request->to;
-//
-//        $bookingSearch = new Booking();
-//        $cars= $bookingSearch->search($dateFrom,$dateTo);
-//
-        $customers = Customer::all();
 
-        return view("bookings.addcusttobooking", ["customers"=>$customers]);
+        $date =$this->search($request);
+        $customers = Customer::all();
+        $staff =Staff::all();
+
+        $data=["firstname"=>"","lastname"=>"","phonenumber"=>"","altphonenumber"=>"","email"=>"","dob"=>"","address"=>"","locality"=>"","city"=>"","state"=>"","pincode"=>""];
+
+        return view("bookings.addcusttobooking", ["customers"=>$customers,"staff"=>$staff,"data"=>$data]);
 
     }
 
 
     public function addstaff(Request $request)
     {
-//        $dateFrom =$request->from;
-//        $dateTo = $request->to;
-//
-//        $bookingSearch = new Booking();
-//        $cars= $bookingSearch->search($dateFrom,$dateTo);
-//
-        $staff = Staff::all();
+        $customers = Customer::all();
 
-        return view("bookings.bookingstaff", ["staff"=>$staff]);
-
+        $custID= $request->vendorname;
+        $data = Customer::find($custID);
+        $staff =Staff::all();
+        return view("bookings.addcusttobooking", ["customers"=>$customers,"staff"=>$staff,"data"=>$data ]);
     }
 
     /**
@@ -112,6 +107,7 @@ class BookingsController extends Controller
     public function show($id)
     {
         //
+        return view("bookings.showbooking");
     }
 
     /**

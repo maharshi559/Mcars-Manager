@@ -1,8 +1,4 @@
 
-#add-car{
-	color: #999999;
-}
-
 form label{
 	color: #888888;
 }
@@ -38,6 +34,8 @@ body{
 	height: 50px;
 	background-color: #fafafa;
 	margin:0;
+	color: #999999;
+	margin-top: 70px;
 	/*margin-bottom: 20px;*/
 }
 

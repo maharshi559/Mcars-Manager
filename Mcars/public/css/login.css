@@ -128,4 +128,18 @@ body{
 	color: #666;
 }
 
+@media (max-width: 768px) {
 
+	.wrapper{
+		padding: 0;
+	}
+
+	#side-panel{
+		display: none;
+		padding: 0;
+	}
+
+	.container{
+		padding: 0;
+	}
+}

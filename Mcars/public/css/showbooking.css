@@ -1,0 +1,15 @@
+#booking-dates h5{
+    color: #0E64A0;
+    font-family: Lato;
+    font-weight: 800;
+    font-size: 30px;
+    text-align: center;
+}
+
+#booking-dates h4{
+    text-align: center;
+}
+
+#booking-dates{
+    border-bottom: 1px solid #c9c9c9;
+}
